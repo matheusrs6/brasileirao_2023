@@ -1,0 +1,121 @@
+<mvc:View xmlns:table="sap.ui.table" controllerName="campeonatobrasileiro.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <ObjectHeader id="objectHeader"
+        title="{ModeloDadosGerais>/edicao_atual/nome_popular}"
+        number="{ModeloDadosGerais>/rodada_atual/nome}"
+        ></ObjectHeader>
+        <IconTabBar id="iconTabBar">
+            <items>
+                <IconTabFilter id="iconTabFilter"
+                text="Classificação"
+                icon="sap-icon://competitor"
+                key="classificacao">
+                    <!-- tabela -->
+                    <Table items="{ModeloClassificacao>/Classificacao}">
+                        <columns> 
+                            <Column>
+                                <Text text="Posição"></Text>
+                            </Column>
+                            <!-- escudo do time -->
+                            <Column>
+                                <Text text=""></Text>
+                            </Column>
+                            <Column>
+                                <Text text="Time"></Text>
+                            </Column>
+                            <!-- pontos -->
+                            <Column>
+                                <Text text="Pts"></Text>
+                            </Column>
+                            <!-- Partidas Jogadas -->
+                            <Column>
+                                <Text text="PJ"></Text>
+                            </Column>
+                            <!-- vitórias -->
+                            <Column>
+                                <Text text="VIT"></Text>
+                            </Column>
+                            <!-- empates -->
+                            <Column>
+                                <Text text="EMP"></Text>
+                            </Column>
+                            <!-- derrotas -->
+                            <Column>
+                                <Text text="DER"></Text>
+                            </Column>
+                            <!-- gols marcados -->
+                            <Column>
+                                <Text text="GM"></Text>
+                            </Column>
+                            <!-- gols contra -->
+                            <Column>
+                                <Text text="GC"></Text>
+                            </Column>
+                            <!-- saldo de gols -->
+                            <Column>
+                                <Text text="SG"></Text>
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <!-- 1a coluna posição -->
+                                <Text text="{ModeloClassificacao>posicao}"></Text>
+                                <!-- 2a coluna escudo -->
+                                <Image width="40%"
+                                src="{ModeloClassificacao>time/escudo}"></Image>
+                                <!-- 3a coluna time -->
+                                <Text text="{ModeloClassificacao>time/nome_popular}"></Text>
+                                <!-- 4a coluna pontos -->
+                                <Text text="{ModeloClassificacao>pontos}"></Text>
+                                <!-- 5a coluna jogos -->
+                                <Text text="{ModeloClassificacao>jogos}"></Text>
+                                <!-- 6a coluna vitórias -->
+                                <Text text="{ModeloClassificacao>vitorias}"></Text>
+                                <!-- 7a coluna empates -->
+                                <Text text="{ModeloClassificacao>empates}"></Text>
+                                <!-- 8a coluna derrotas -->
+                                <Text text="{ModeloClassificacao>derrotas}"></Text>
+                                <!-- 9a coluna gols marcados -->
+                                <Text text="{ModeloClassificacao>gols_pro}"></Text>
+                                <!-- 10a coluna gols contra -->
+                                <Text text="{ModeloClassificacao>gols_contra}"></Text>
+                                <!-- 11a coluna saldo de gols -->
+                                <Text text="{ModeloClassificacao>saldo_gols}"></Text>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </IconTabFilter>
+                
+                <IconTabFilter text="Partidas"
+                icon="sap-icon://soccer"
+                key="partidas">
+                    <!-- próximas partidas -->
+                    <Table headerText="9ª Rodada" items="{ModeloPartidas>/partidas}">
+                        <columns>
+                            <Column hAlign="Right">
+                                <Text text=""></Text>
+                            </Column>
+                            <Column hAlign="Center" vAlign="Middle">
+                                <Text text="Resultados"></Text>
+                            </Column>
+                            <Column hAlign="Left">
+                                <Text text=""></Text>
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <Image width="15%" src="{ModeloPartidas>time_mandante/escudo}"></Image>
+                                <Text text="{ModeloPartidas>placar}&#13;{ModeloPartidas>data_realizacao} {ModeloPartidas>hora_realizacao}&#13;{ModeloPartidas>status}"></Text>
+                                <Image width="15%" src="{ModeloPartidas>time_visitante/escudo}"></Image>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>
